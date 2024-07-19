@@ -73,17 +73,19 @@ connection, but historically has been over PS/2 or ADB connections.
 
 - This serial signal is then decoded at the computer's host USB controller, and
   interpreted by the computer's Human Interface Device (HID) universal keyboard
-  device driver. These serial signals are sent in a structured and serialized manner, which means that the intial bits of the packets which are now serial signals are sent one after another over the USB connection.The decoding of serial signals also known as input reports, by the host USB controller involves several steps:
+  device driver. 
+ - These serial signals are sent in a structured and serialized manner, which means that the intial bits of the packets which are now serial signals are sent one after another over the USB connection.The decoding of serial signals also known as input reports, by the host USB controller involves several steps:
 
- - Signal Reception: The USB controller of the user's PC receives the signals transmitted over the USB bus. These signals are represented as sequeces of binary data (0s and 1s)
+  - Signal Reception: The USB controller of the user's PC receives the signals transmitted over the USB bus. These signals are represented as sequeces of binary data (0s and 1s)
 
- - Signal Conversion: The controller then converts the analog signal levels into digital data by voltage level detection. High voltage and low voltage levels correspond to logical high and low states respectively. The signals at these points are now called bits.
+  - Signal Conversion: The controller then converts the analog signal levels into digital data by voltage level detection. High voltage and low voltage levels correspond to logical high and low states respectively. The signals at these points are now called bits.
 
- - Packet  Reformation: The data packet is reformed at the USB controller using a set of well defined USB protocol, which underlines a structured format for data transmission, including headers and checksums. Now the incoming bits are organized into packets, which must contain information such as device address, data length, and the actual data payload.
+  - Packet  Reformation: The data packet is reformed at the USB controller using a set of well defined USB protocol, which underlines a structured format for data transmission, including headers and checksums. Now the incoming bits are organized into packets, which must contain information such as device address, data length, and the actual data payload.
 
- - Error Checking: The controller performs error checking using CRC (Cyclic Redundancy Check) to ensure data integrity. If errors are detected, the packet may be discarded or a request for retransmission may be initiated.
+  - Error Checking: The controller performs error checking using CRC (Cyclic Redundancy Check) to ensure data integrity. If errors are detected, the packet may be discarded or a request for retransmission may be initiated.
 
- - And lastly,Data Transfer: Once the packets are successfully formed and verified, they are passed to the operating system for interpretation by the keyboard's universal HID driver which must have been previously installed on the user's PC.
+  - And lastly, data Transfer: Once the packets are successfully formed and verified, they are passed to the operating system for interpretation by the keyboard's universal HID driver which must have been previously installed on the user's PC.
+
 
 *In the case of Virtual Keyboard (as in touch screen devices):*
 
